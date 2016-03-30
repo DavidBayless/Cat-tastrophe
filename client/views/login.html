@@ -1,0 +1,24 @@
+<div class='loginWrapper'>
+  <div class='row loginScreen'>
+    <div class='col-md-10 col-md-offset-1'>
+      <div class='row'>
+        <div class='col-md-6 col-md-offset-3 login'>
+          <h1>Login and Stuff</h1>
+          <form>
+            <!-- <label for='username'>Username</label> -->
+            <input type='text' name='username' ng-model='user.username' placeholder='username'>
+            <br>
+            <!-- <label for='password'>Password</label> -->
+            <input type='password' name='password' ng-model='user.password' placeholder="password">
+            <br>
+            <input type='button' value='Log In!' ng-click='TC.login(user)'>
+            <br>
+          </form>
+          <a ng-href='#/signup'><input type='button' value="Don't have an account?"></a>
+          <br>
+          <input type='button' value="Play as a Guest" ng-click='user.username = "guest";user.password = "supersecretguestpassword";TC.login(user)'>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,141 @@
+@font-face {
+  font-family: Adventure;
+  src: local("Adventure.otf"); }
+
+* {
+  box-sizing: border-box; }
+
+body {
+  font-size: 10px;
+  font-family: "Adventure", monospace, sans-serif;
+  min-height: 100vh; }
+
+.wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background: url("../static/homeCat.png") center center no-repeat;
+  background-size: cover;
+  z-index: -1; }
+
+.titleBar {
+  width: 100%;
+  height: 75px;
+  background-color: #211c41;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 1px 1px 1px 1px #212121;
+  z-index: 1; }
+  .titleBar h1 {
+    font-size: 55px;
+    background: -webkit-linear-gradient(#ee5113, #ffbb00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 2px black;
+    position: relative;
+    top: 50%;
+    transform: translateY(-20%); }
+
+.hoverInfo, .login, .hoverLobby {
+  min-height: 400px;
+  background-color: rgba(33, 28, 65, 0.7);
+  border-radius: 5px;
+  text-align: center;
+  margin-top: 150px;
+  margin-bottom: 100px;
+  color: #c00c08;
+  box-shadow: 1px 1px 1px 1px #212121;
+  border: 4px outset #5b0504; }
+
+.hoverInfo:hover, .login:hover, .hoverLobby:hover {
+  transform: translateY(-1px); }
+
+.stats {
+  background: url("../static/studyCat.png") center center no-repeat;
+  background-size: cover; }
+
+.games {
+  background: url("../static/playCat.png") center center no-repeat;
+  background-size: cover; }
+
+input, select {
+  border: 0;
+  font-size: 35px;
+  border-bottom: 1px solid #f0e9df;
+  background-color: transparent;
+  margin: 20px;
+  color: #f0e9df;
+  outline: none; }
+
+input[type^='button'], select[type^='button'] {
+  background-color: #f0e9df;
+  padding-right: 10px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px 1px #212121;
+  color: #c00c08; }
+
+input[type^='button']:hover, select[type^='button']:hover {
+  transform: translateY(-1px); }
+
+input::-webkit-input-placeholder, select::-webkit-input-placeholder {
+  color: #ee5113;
+  -webkit-transition: all 0.2s linear; }
+
+input:hover::-webkit-input-placeholder, select:hover::-webkit-input-placeholder {
+  font-size: 20px; }
+
+select {
+  width: 10%; }
+
+label {
+  font-size: 35px;
+  color: #ee5113; }
+
+.login, .hoverLobby {
+  min-height: 0; }
+  .login h1, .hoverLobby h1 {
+    font-size: 55px; }
+
+.login:hover, .hoverLobby:hover {
+  transform: translateY(0); }
+
+.gameSearch {
+  width: 100%; }
+
+.hoverLobby {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  min-height: 0; }
+
+.hoverLobby:hover {
+  transform: translateY(-1px); }
+
+canvas {
+  min-width: 100%;
+  min-height: 100vh;
+  position: absolute;
+  z-index: 10; }
+
+.mapOne, .mapTwo, .mapThree, .mapFour {
+  height: 400px;
+  background: url("../static/stormy.png") center center no-repeat;
+  background-size: cover;
+  padding: 0; }
+  .mapOne img, .mapTwo img, .mapThree img, .mapFour img {
+    height: inherit;
+    width: 100%; }
+
+.mapTwo {
+  background: url("../static/city.png") center center no-repeat; }
+
+.mapThree {
+  background: url("../static/sunny.png") center center no-repeat; }
+
+.mapFour {
+  background: url("../static/cat-is-smiling.jpg") center center no-repeat; }
+
+.white {
+  color: #f0e9df; }

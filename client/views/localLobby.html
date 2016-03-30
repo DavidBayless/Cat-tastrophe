@@ -1,0 +1,57 @@
+<div class='makeGame'>
+  <div class='row'>
+    <div class='col-md-8 col-md-offset-2'>
+      <div class='row login'>
+        <form ng-init='gameroom.players = []; gameroom.map = 1'>
+          <h2>Local Game Room</h2>
+          <label for='level'>Map</label>
+          <select ng-model='gameroom.map'>
+            <option ng-repeat='level in TC.levels' name='level' value='{{level}}'>{{level}}</option>
+          </select>
+          <label for='players'>Players</label>
+          <select ng-model='TC.numPlayers'>
+            <option name='players' value='2'>2</option>
+            <option name='players' value='3'>3</option>
+            <option name='players' value='4'>4</option>
+            <option name='players' value='5'>5</option>
+            <option name='players' value='6'>6</option>
+            <option name='players' value='7'>7</option>
+            <option name='players' value='8'>8</option>
+          </select>
+        </form>
+        <div>
+          <h3 class='white'>How To Play: A & D to move, Up and Down to aim, Left and Right to adjust power</h3>
+        </div>
+      </div>
+      <div class='row' ng-if='gameroom.map === "1"'>
+        <div class='hoverLobby col-md-8 col-md-offset-2 mapOne'>
+          <img src='../static/bridge.png'>
+        </div>
+      </div>
+      <div class='row' ng-if='gameroom.map === "2"'>
+        <div class='hoverLobby col-md-8 col-md-offset-2 mapTwo'>
+          <img src='../static/bkgOne.png'>
+        </div>
+      </div>
+      <div class='row' ng-if='gameroom.map === "3"'>
+        <div class='hoverLobby col-md-8 col-md-offset-2 mapThree'>
+          <img src='../static/desert.png'>
+        </div>
+      </div>
+      <div class='row' ng-if='gameroom.map === "4"'>
+        <div class='hoverLobby col-md-8 col-md-offset-2 mapFour'>
+          <img src='../static/catastrophe.png'>
+        </div>
+      </div>
+      <div class='row' ng-repeat='player in TC.getNumber(TC.numPlayers) track by $index'>
+        <div class='col-md-8 col-md-offset-2 hoverLobby'>
+          <label for='name'>Name</label>
+          <input type='text' ng-model='gameroom.players[$index].name' name='name' placeholder="player name" ng-init='gameroom.players[$index].name = "player " + ($index + 1)'>
+        </div>
+      </div>
+      <div class='hoverLobby'>
+        <input type='button' value='Start Game' ng-click='TC.createLocalGame(gameroom)'>
+      </div>
+    </div>
+  </div>
+</div>

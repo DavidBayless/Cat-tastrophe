@@ -1,0 +1,23 @@
+<div class='lobbyWrapper'>
+  <div class='row'>
+    <div class='col-md-10 col-md-offset-1 login'>
+      <div class='row'>
+        <div class='col-md-3 col-md-offset-1 search'>
+          <input class='gameSearch' type='text' name='search' placeholder="search" ng-model='lobbySearch'>
+        </div>
+        <div class='col-md-2 col-md-offset-4 createGame'>
+          <a  ng-href='#/makeGame'><input type='button' name='create' value='Make a Game'></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class='row' ng-repeat='game in TC.games | filter: lobbySearch'>
+    <div class='col-md-10 col-md-offset-1 hoverLobby' ng-click='TC.game=game; TC.enterGameRoom(game)'>
+      <div class='row'>
+        <div class='col-md-3 col-md-offset-1'>
+          <h3>{{game.name}}</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

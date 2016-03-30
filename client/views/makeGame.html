@@ -1,0 +1,16 @@
+<div class='makeGame'>
+  <div class='row'>
+    <div class='col-md-8 col-md-offset-2'>
+      <div class='row login'>
+        <form>
+          <input type='text' placeholder="Room Name" ng-model='gameroom.name'>
+          <label for='level'>Map</label>
+          <select ng-model='gameroom.level'>
+            <option ng-repeat='level in TC.levels' name='level' value='{{level}}'>{{level}}</option>
+          </select>
+          <input type='button' value='Create Room' ng-click='TC.createRoom(gameroom)'>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
