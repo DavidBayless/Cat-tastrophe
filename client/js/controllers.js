@@ -1,6 +1,6 @@
-app.controller('TankController', ['$scope', '$rootScope', '$http', '$window', 'isLoggedInService', 'allGamesService', 'players', 'maps', TankController]);
+app.controller('TankController', ['$scope', '$rootScope', '$http', '$window', 'isLoggedInService', 'allGamesService', 'players', 'maps', 'server', TankController]);
 
-function TankController($scope, $rootScope, $http, $window, isLoggedInService, allGamesService, players, maps) {
+function TankController($scope, $rootScope, $http, $window, isLoggedInService, allGamesService, players, maps, server) {
   if ($window.location.hash.split('/')[1] !== 'games') {
     var vm = this;
     // console.log(vm.player);
@@ -38,7 +38,7 @@ function TankController($scope, $rootScope, $http, $window, isLoggedInService, a
       if (rootHash === '#/gameRoom') {
         console.log('roothash is accurate');
         console.log(vm.game.id);
-        $http.get('//lvh.me:3000/games/gamesPlayers/' + vm.game.id).then(function(data) {
+        $http.get(server + 'games/gamesPlayers/' + vm.game.id).then(function(data) {
           console.log(data.data);
           if (vm.gamePlayers !== data.data) {
             vm.gamePlayers = data.data;
@@ -52,7 +52,7 @@ function TankController($scope, $rootScope, $http, $window, isLoggedInService, a
           console.log('this is an error: ' + err);
         });
 
-        $http.get('//lvh.me:3000/games/' + possibleId).then(function(data) {
+        $http.get(server + 'games/' + possibleId).then(function(data) {
           console.log(data.data[0]);
           if (data.data[0].isStarted === true) {
             // console.log(vm.gamePlayers);
@@ -80,7 +80,7 @@ function TankController($scope, $rootScope, $http, $window, isLoggedInService, a
     vm.games = [];
     vm.login = function(user) {
       // console.log('hello world');
-      $http.post('//lvh.me:3000/users', user).then(function(data) {
+      $http.post(server + 'users', user).then(function(data) {
         $window.location.href='/';
         console.log(data.data);
         $window.sessionStorage.token = data.data;
@@ -92,7 +92,7 @@ function TankController($scope, $rootScope, $http, $window, isLoggedInService, a
 
     vm.signup = function(user) {
       console.log(user);
-      $http.post('//lvh.me:3000/users/new', user).then(function(data) {
+      $http.post(server + 'users/new', user).then(function(data) {
         $window.location.href='#/login';
         console.log(data);
         // isLoggedInService(data.data[0].username)();
@@ -111,7 +111,7 @@ function TankController($scope, $rootScope, $http, $window, isLoggedInService, a
 
     vm.enterGameRoom = function(game) {
       console.log(game);
-      $http.put('//lvh.me:3000/games/add/' + game.id, window.atob($window.sessionStorage.token.split('.')[1]))
+      $http.put(server + 'games/add/' + game.id, window.atob($window.sessionStorage.token.split('.')[1]))
       .then(function(data) {
         vm.game = game;
         console.log(data.data);
@@ -126,7 +126,7 @@ function TankController($scope, $rootScope, $http, $window, isLoggedInService, a
       console.log(game);
       game.level = parseInt(game.level);
       game.password = '';
-      $http.post('//lvh.me:3000/games/' + JSON.parse(window.atob($window.sessionStorage.token.split('.')[1])).id, game).then(function(data) {
+      $http.post(server + 'games/' + JSON.parse(window.atob($window.sessionStorage.token.split('.')[1])).id, game).then(function(data) {
         console.log(data.data.game);
         vm.gamePlayers = data.data.player;
         vm.game = game;
@@ -157,7 +157,7 @@ function TankController($scope, $rootScope, $http, $window, isLoggedInService, a
 
     vm.startGame = function(players) {
       console.log(players);
-      $http.put('//lvh.me:3000/games/start/' + vm.game.id).then(function(data) {
+      $http.put(server + 'games/start/' + vm.game.id).then(function(data) {
         console.log(data);
       }).catch(function(err) {
         console.log(err);

@@ -1,7 +1,1 @@
 node_modules
-migrations
-db
-seeds
-knexfile.js
-package.json
-vendors

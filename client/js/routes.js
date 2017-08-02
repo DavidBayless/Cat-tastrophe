@@ -37,7 +37,7 @@ app.config(function($routeProvider) {
       controller: 'GameLocalController as GLC'
     })
     .when('/localLobby', {
-      templateUrl: '../views/localLobby',
+      templateUrl: '../views/localLobby.html',
       controller: 'TankController as TC'
     });
 });

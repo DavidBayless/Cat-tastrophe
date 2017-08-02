@@ -1,2 +1,3 @@
 var app = angular.module('tankApp', ['ngRoute']);
-// Change Me
+
+app.constant('server', 'https://cat-tastrophe.herokuapp.com/');

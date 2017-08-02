@@ -7,11 +7,11 @@ function isLoggedInService(playerName) {
   // };
 }
 
-app.service('allGamesService', ['$http', allGamesService]);
+app.service('allGamesService', ['$http', 'server', allGamesService]);
 
-function allGamesService($http) {
+function allGamesService($http, server) {
   console.log("I'm running");
-  return $http.get('//lvh.me:3000/games/');
+  return $http.get(server + 'games/');
 }
 
 app.service('players', [players]);
@@ -74,7 +74,7 @@ function gameStartService($http) {
         body.healthText.y = startObj.players[i].kitten.healthText.position.y;
         body.direction = startObj.players[i].direction;
         console.log(body);
-        promArr.push($http.put('//lvh.me:3000/games/playerMove/' + startObj.gameRoom, body));
+        promArr.push($http.put(server + 'games/playerMove/' + startObj.gameRoom, body));
       }
       return Promise.all(promArr).then(function(success) {
         startObj.start();

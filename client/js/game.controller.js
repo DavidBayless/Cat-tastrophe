@@ -1,6 +1,6 @@
-app.controller('GameController', ['$http', 'players', '$window', 'gameStartService', GameController]);
+app.controller('GameController', ['$http', 'players', '$window', 'gameStartService', 'server', GameController]);
 
-function GameController($http, players, $window, gameStartService) {
+function GameController($http, players, $window, gameStartService, server) {
   var game = new Phaser.Game(640, 480, Phaser.CANVAS, 'phaser-example');
   console.log(game);
   console.log(Phaser);
@@ -69,7 +69,7 @@ function GameController($http, players, $window, gameStartService) {
       this.targets.create(545, 305, 'target');
       this.targets.create(726, 391, 'target');
       this.targets.create(972, 74, 'target');
-      
+
       this.targets.setAll('body.allowGravity', false);
 
       this.land = this.add.bitmapData(2048, 768);
